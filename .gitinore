@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Model weights
+*.pth
+*.pt
+*.ckpt
+
+# Dataset (jangan push dataset ke GitHub)
+train/
+test/
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Logs
+logs/
+runs/
+
+# VSCode settings
+.vscode/
