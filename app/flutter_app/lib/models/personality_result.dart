@@ -33,3 +33,22 @@ class PersonalityResult {
     required this.careerExplanation,      // TAMBAHKAN
   });
 }
+
+factory PersonalityResult.fromJson(Map<String, dynamic> json) {
+  return PersonalityResult(
+    personalityType: json['personalityType'],
+    summary: json['summary'],
+    color: Colors.blue,  // atau mapping string → warna
+    traits: (json['traits'] as List)
+        .map((e) => PersonalityTrait(
+              name: e['name'],
+              score: e['score'],
+              description: e['description'],
+            ))
+        .toList(),
+    strengths: List<String>.from(json['strengths']),
+    weaknesses: List<String>.from(json['weaknesses']),
+    careerSuggestions: List<String>.from(json['careerSuggestions']),
+    careerExplanation: json['careerExplanation'],
+  );
+}
