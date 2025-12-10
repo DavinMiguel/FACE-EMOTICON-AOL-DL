@@ -10,6 +10,22 @@ class PersonalityTrait {
     required this.score,
     required this.description,
   });
+
+  factory PersonalityTrait.fromJson(Map<String, dynamic> json) {
+    return PersonalityTrait(
+      name: json['name'],
+      score: json['score'],
+      description: json['description'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'score': score,
+      'description': description,
+    };
+  }
 }
 
 class PersonalityResult {
@@ -19,36 +35,47 @@ class PersonalityResult {
   final List<PersonalityTrait> traits;
   final List<String> strengths;
   final List<String> weaknesses;
-  final List<String> careerSuggestions;    // TAMBAHKAN
-  final String careerExplanation;          // TAMBAHKAN
+  final List<String> careerSuggestions;
+  final String careerExplanation;
 
   PersonalityResult({
     required this.personalityType,
     required this.summary,
     required this.color,
     required this.traits,
-    required this.strengths,              // TAMBAHKAN
-    required this.weaknesses,             // TAMBAHKAN
-    required this.careerSuggestions,      // TAMBAHKAN
-    required this.careerExplanation,      // TAMBAHKAN
+    required this.strengths,
+    required this.weaknesses,
+    required this.careerSuggestions,
+    required this.careerExplanation,
   });
-}
 
-factory PersonalityResult.fromJson(Map<String, dynamic> json) {
-  return PersonalityResult(
-    personalityType: json['personalityType'],
-    summary: json['summary'],
-    color: Colors.blue,  // atau mapping string → warna
-    traits: (json['traits'] as List)
-        .map((e) => PersonalityTrait(
-              name: e['name'],
-              score: e['score'],
-              description: e['description'],
-            ))
-        .toList(),
-    strengths: List<String>.from(json['strengths']),
-    weaknesses: List<String>.from(json['weaknesses']),
-    careerSuggestions: List<String>.from(json['careerSuggestions']),
-    careerExplanation: json['careerExplanation'],
-  );
+  // ==============================
+  // FIX: Factory method HARUS DI DALAM CLASS
+  // ==============================
+  factory PersonalityResult.fromJson(Map<String, dynamic> json) {
+    return PersonalityResult(
+      personalityType: json['personalityType'],
+      summary: json['summary'],
+      color: Colors.blue, // Bisa diganti mapping
+      traits: (json['traits'] as List<dynamic>)
+          .map((e) => PersonalityTrait.fromJson(e))
+          .toList(),
+      strengths: List<String>.from(json['strengths']),
+      weaknesses: List<String>.from(json['weaknesses']),
+      careerSuggestions: List<String>.from(json['careerSuggestions']),
+      careerExplanation: json['careerExplanation'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'personalityType': personalityType,
+      'summary': summary,
+      'traits': traits.map((t) => t.toJson()).toList(),
+      'strengths': strengths,
+      'weaknesses': weaknesses,
+      'careerSuggestions': careerSuggestions,
+      'careerExplanation': careerExplanation,
+    };
+  }
 }

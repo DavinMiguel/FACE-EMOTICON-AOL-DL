@@ -1,5 +1,4 @@
-fastapi
-uvicorn
-tensorflow
-numpy
-pydantic
+flask
+onnxruntime
+opencv-python
+numpy==1.26.4

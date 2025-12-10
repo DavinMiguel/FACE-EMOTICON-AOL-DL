@@ -1,17 +1,26 @@
-import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:file_picker/file_picker.dart';
 
-class AiService {
-  Future<Map<String, dynamic>> analyzeImage(File image) async {
-    var uri = Uri.parse("http://127.0.0.1:5000/predict");
+class AIService {
 
-    var request = http.MultipartRequest("POST", uri);
-    request.files.add(await http.MultipartFile.fromPath("image", image.path));
+  static const String apiUrl = "http://192.168.1.102:5000/predict";
 
-    var response = await request.send();
-    var responseData = await response.stream.bytesToString();
+  static Future<Map<String, dynamic>> analyzeImageBytes(
+      PlatformFile file) async {
+    var request = http.MultipartRequest("POST", Uri.parse(apiUrl));
 
-    return jsonDecode(responseData);
+    request.files.add(
+      http.MultipartFile.fromBytes(
+        'image',
+        file.bytes!,
+        filename: file.name,
+      ),
+    );
+
+    final response = await request.send();
+    final responseBody = await response.stream.bytesToString();
+
+    return jsonDecode(responseBody);
   }
 }

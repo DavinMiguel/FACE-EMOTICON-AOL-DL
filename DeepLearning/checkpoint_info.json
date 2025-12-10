@@ -1,0 +1,17 @@
+{
+    "num_classes": 7,
+    "labels": [
+        "Angry",
+        "Disgust",
+        "Fear",
+        "Happy",
+        "Sad",
+        "Surprise",
+        "Neutral"
+    ],
+    "input_size": [
+        224,
+        224
+    ],
+    "model_file": "emotion_resnet18.pth"
+}
