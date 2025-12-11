@@ -27,7 +27,7 @@ INPUT_SIZE = tuple(config.get("input_size", (224, 224)))
 MODEL_FILE = config.get("model_file")  # e.g. "model.pth"
 
 # model expected inside repo at ../DeepLearning/<model>.onnx
-MODEL_PATH = Path(__file__).resolve().parent.parent / "DeepLearning" / MODEL_FILE.replace(".pth", ".onnx")
+MODEL_PATH = BASE_DIR / "DeepLearning" / MODEL_FILE.replace(".pth", ".onnx")
 
 # Face detector assets (assumed present in backend/face_detector/)
 FACE_PROTO = str(BASE_DIR / "face_detector" / "deploy.prototxt")
