@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from inference import predict_emotion, detect_face
+from inference import predict_emotion, detect_face_ssd
 import os
 
 app = Flask(__name__)
@@ -12,18 +12,18 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    # Cek apakah file dikirim
+    # Cek file
     if "image" not in request.files:
         return jsonify({"status": "error", "message": "No image uploaded"}), 400
 
     file = request.files["image"]
 
-    # Simpan file sementara
+    # Simpan file
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(filepath)
 
-    # ========== FACE DETECTION ==========
-    if not detect_face(filepath):
+    # ========== FACE DETECTION (SSD) ==========
+    if not detect_face_ssd(filepath):
         return jsonify({
             "status": "error",
             "message": "No face detected"
