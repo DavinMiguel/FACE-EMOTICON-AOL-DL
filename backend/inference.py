@@ -4,9 +4,8 @@ import cv2
 import json
 from pathlib import Path
 
-# ==========================
 # LOAD MODEL CONFIG
-# ==========================
+
 config_path = Path(__file__).resolve().parent / "checkpoint_info.json"
 config = json.load(open(config_path))
 
@@ -20,10 +19,8 @@ model_path = Path(__file__).resolve().parent.parent / "DeepLearning" / MODEL_FIL
 # Load ONNX Runtime model
 session = ort.InferenceSession(str(model_path), providers=["CPUExecutionProvider"])
 
-
-# ==========================
 # SSD FACE DETECTOR (DNN)
-# ==========================
+
 FACE_PROTO = str(Path(__file__).resolve().parent / "face_detector" / "deploy.prototxt")
 FACE_MODEL = str(Path(__file__).resolve().parent / "face_detector" / "res10_300x300_ssd_iter_140000.caffemodel")
 
@@ -56,10 +53,8 @@ def detect_face_ssd(image_path, conf_threshold=0.6):
 
     return False
 
-
-# ==========================
 # IMAGE PREPROCESSING
-# ==========================
+
 def preprocess_image(image_path):
     img = cv2.imread(image_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

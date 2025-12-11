@@ -11,11 +11,11 @@ class PersonalityScannerApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personality Scanner',
       theme: ThemeData(
-        primarySwatch: Colors.pink,  // Magenta/pink
-        primaryColor: Color(0xFFE91E63),  // Magenta pink
+        primarySwatch: Colors.pink,  
+        primaryColor: Color(0xFFE91E63),  
         colorScheme: ColorScheme.light(
-          primary: Color(0xFFE91E63),  // Magenta
-          secondary: Color(0xFF9C27B0),  // Purple
+          primary: Color(0xFFE91E63),  
+          secondary: Color(0xFF9C27B0), 
           background: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.white,
@@ -31,7 +31,7 @@ class PersonalityScannerApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFFE91E63),  // Magenta
+            backgroundColor: Color(0xFFE91E63), 
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

@@ -30,9 +30,8 @@ class _UploadScreenState extends State<UploadScreen> {
     }
   }
 
-  // ===========================================================
-  //               FIXED API CALL WITH SAFETY CHECK
-  // ===========================================================
+  //  API CALL WITH SAFETY CHECK
+
   Future<void> _analyzeImage() async {
     if (_pickedFile == null) return;
 
@@ -91,9 +90,8 @@ class _UploadScreenState extends State<UploadScreen> {
     );
   }
 
-  // ===========================================================
   // UI
-  // ===========================================================
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

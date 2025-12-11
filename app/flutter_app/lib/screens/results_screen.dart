@@ -46,9 +46,8 @@ class _ResultsScreenState extends State<ResultsScreen>
     });
   }
 
-  // ==========================================================
   // GENERATE PERSONALITY TRAITS DINAMIS (BERDASARKAN EMOTION)
-  // ==========================================================
+
   List<PersonalityTrait> _generateTraits(String emotion, double conf) {
     int base = (conf * 100).round();
 
@@ -81,9 +80,8 @@ class _ResultsScreenState extends State<ResultsScreen>
     });
   }
 
-  // ==========================================================
   // MAIN BUILD
-  // ==========================================================
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,9 +100,8 @@ class _ResultsScreenState extends State<ResultsScreen>
     );
   }
 
-  // ==========================================================
   // LOADING VIEW
-  // ==========================================================
+
   Widget _buildLoading() {
     return Center(
       child: Column(
@@ -121,9 +118,8 @@ class _ResultsScreenState extends State<ResultsScreen>
     );
   }
 
-  // ==========================================================
   // NO FACE DETECTED
-  // ==========================================================
+
   Widget _buildNoFaceDetected() {
     return Center(
       child: Column(
@@ -157,9 +153,6 @@ class _ResultsScreenState extends State<ResultsScreen>
     );
   }
 
-  // ==========================================================
-  // NORMAL RESULT UI (PREMIUM + DINAMIS)
-  // ==========================================================
   Widget _buildNormalResult() {
     return SingleChildScrollView(
       padding: EdgeInsets.all(20),

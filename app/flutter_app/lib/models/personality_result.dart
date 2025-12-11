@@ -49,9 +49,6 @@ class PersonalityResult {
     required this.careerExplanation,
   });
 
-  // ==============================
-  // FIX: Factory method HARUS DI DALAM CLASS
-  // ==============================
   factory PersonalityResult.fromJson(Map<String, dynamic> json) {
     return PersonalityResult(
       personalityType: json['personalityType'],

@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: SingleChildScrollView(
-            // <-- Tambahkan ScrollView
+            
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
 
-                  SizedBox(height: 40), // <-- Ganti Spacer() dengan SizedBox
+                  SizedBox(height: 40), 
                   _buildInfoCards(),
 
                   SizedBox(height: 40),

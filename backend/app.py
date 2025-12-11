@@ -12,7 +12,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    # Cek file
+ 
     if "image" not in request.files:
         return jsonify({"status": "error", "message": "No image uploaded"}), 400
 
@@ -22,14 +22,14 @@ def predict():
     filepath = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(filepath)
 
-    # ========== FACE DETECTION (SSD) ==========
+    # FACE DETECTION (SSD) 
     if not detect_face_ssd(filepath):
         return jsonify({
             "status": "error",
             "message": "No face detected"
         }), 400
 
-    # ========== EMOTION PREDICTION ==========
+    # EMOTION PREDICTION 
     result = predict_emotion(filepath)
 
     return jsonify({
